@@ -45,7 +45,7 @@ export class AuthController {
     return response;
   }
 
-  @Get('students')
+  @Get('student')
   @UseGuards(JwtAuthGuard)
   async getAllStudents() {
     const result = await this.authService.getAllStudents();

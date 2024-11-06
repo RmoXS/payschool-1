@@ -56,6 +56,8 @@ export class AuthService {
           throw new BadRequestException('Email has been registered');
         } else if (error.message.includes(nisConstraintName)) {
           throw new BadRequestException('NIS has been registered');
+        } else {
+          throw new InternalServerErrorException('Something went wrong');
         }
       } else {
         throw new InternalServerErrorException('Something went wrong');
