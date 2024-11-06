@@ -9,9 +9,9 @@ import {
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('increment')
-  user_id: string;
+  user_id: number;
 
-  @Column({ type: 'char', length: 5 })
+  @Column({ type: 'varchar', length: 10 })
   role: string;
 
   @Column({ type: 'varchar', length: 32 })
