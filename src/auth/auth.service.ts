@@ -40,6 +40,8 @@ export class AuthService {
       user.name = registerData.name;
       user.password = hashedPassword;
       user.role = registerData.role;
+      user.class_origin = registerData.class_origin;
+      user.nis = registerData.nis;
 
       await this.userRepository.save(user);
     } catch (error) {

@@ -5,26 +5,27 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { ClassOrigin } from './ClassOrigin';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   user_id: string;
 
   @Column({ type: 'char', length: 5 })
   role: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 32 })
   name: string;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Column({ type: 'varchar', length: 16 })
+  nis: string;
+
+  @Column({ type: 'varchar', length: 32 })
   email: string;
+
+  @Column({ type: 'varchar', length: 8 })
+  class_origin: string;
 
   @Column({ type: 'varchar', length: 255 })
   password: string;
-
-  @ManyToOne(() => ClassOrigin, (classOrigin) => classOrigin.users)
-  @JoinColumn({ name: 'class_origin_id' })
-  classOrigin: ClassOrigin;
 }

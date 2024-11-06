@@ -6,7 +6,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/User';
-import { ClassOrigin } from 'src/entities/ClassOrigin';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 
@@ -22,7 +21,7 @@ import { LocalStrategy } from './strategies/local.strategy';
     }),
     PassportModule,
     ConfigModule,
-    TypeOrmModule.forFeature([ClassOrigin, User]),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
