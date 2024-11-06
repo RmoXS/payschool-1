@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { UserBill } from './UserBill';
 
 @Entity('users')
 export class User {
@@ -22,4 +23,7 @@ export class User {
 
   @Column({ type: 'varchar', length: 255 })
   password: string;
+
+  @OneToMany(() => UserBill, (userBill) => userBill.user)
+  userBill: UserBill[];
 }

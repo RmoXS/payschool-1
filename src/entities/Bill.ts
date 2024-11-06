@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserBill } from './UserBill';
 
 @Entity('bills')
 export class Bill {
@@ -16,4 +23,7 @@ export class Bill {
 
   @Column({ type: 'date' })
   deadline: string;
+
+  @OneToMany(() => UserBill, (userBill) => userBill.bill)
+  userBill: UserBill[];
 }
