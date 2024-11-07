@@ -82,7 +82,7 @@ export class AuthService {
       throw new UnauthorizedException('Wrong password');
     }
 
-    const userPaylod: UserDto = { userId: user.user_id };
+    const userPaylod: UserDto = { userId: user.user_id, name: user.name, role: user.role };
 
     return userPaylod;
   }
@@ -90,6 +90,8 @@ export class AuthService {
   async login(user: UserDto) {
     const payload: JwtPayloadDto = {
       sub: user.userId,
+      name: user.name,
+      role: user.role,
     };
     const token = await this.jwtService.signAsync(payload);
 
